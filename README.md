@@ -1,7 +1,7 @@
 # serosense project
 
-### serosense is a self-contained project working with relative file-paths.
-### It is easiest to import it from github as project into R Studio.
+serosense is a self-contained project working with relative file-paths.
+It is easiest to import it from github as project into R Studio.
 
 # Dependencies
 Needed packages: 
@@ -17,7 +17,7 @@ Needed packages:
 
 
 ## Note on data
-# Due to the large size of the .fcs flow cytometry data, GFP columns were extracted from #.fcs files and saved as .Rda dataframes. Those were uploaded. An example script on how # .fcs files were processed is uploaded.
+Due to the large size of the .fcs flow cytometry data, GFP columns were extracted from .fcs files and saved as .Rda dataframes. Those were uploaded. An example script on how .fcs files were processed is uploaded.
 
 
 
