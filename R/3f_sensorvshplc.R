@@ -2,7 +2,7 @@
 
 # Loading the packages
 source(here::here("R/package_loading.R"))
-# Loading the packages
+# Loading the data
 load("data/3F_df.rda")
 
 

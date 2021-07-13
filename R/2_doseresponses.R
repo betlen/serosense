@@ -3,7 +3,7 @@
 # Load all the packages needed
 source(here::here("R/package_loading.R"))
 
-# Load the dataframe
+# Load the data
 load(here::here("data/fig2_dataframe.Rda"))
 
 fig2_dataframe <- fig2_dataframe %>% mutate(strain2 = factor(strain2, levels=c(
