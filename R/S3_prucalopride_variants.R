@@ -1,9 +1,6 @@
-library(tidyverse)
-library(flowCore)
-library(dplyr)
-library(ggplot2)
+source(here::here("R/package_loading.R"))
 
-load("~/Desktop/Prucalopride_Variant/data/Prucalopride_Variants.rda")
+load(here::here("data/S3_dataframe.Rda"))
 
 #for dose responses, get rid of plate_checks
 total_all_dose<-total_all %>% dplyr::filter(!grepl('plate_control', sample_type))
@@ -16,11 +13,11 @@ p <- ggplot(total_all_dose, aes(x=conc, y=fluo)) +
   facet_wrap(~ type)
 p
 
-#Calculate means for Prism analysis 
+#Calculate means for Prism analysis
 total_for_means <-total_all_dose
 
 #calculate median for each sample
-plot_df_median <- total_all_dose %>% 
+plot_df_median <- total_all_dose %>%
   group_by(ligand,variant, well,conc) %>%
   summarize(med = median(fluo, na.rm = T), dev = sd(fluo, na.rm = T), themean = mean(fluo, na.rm=T))
 
@@ -33,7 +30,7 @@ plot_df_mean <- plot_df_median  %>%
 plot_df_mean$conc = as.numeric(gsub("\\uM", "", plot_df_mean$conc))
 
 # concentration curves
-plot_df_means_filtered <- plot_df_means 
+plot_df_means_filtered <- plot_df_means
 plot_df_means_filtered  %>%
   ggplot(aes(conc, meanofthree)) +
   geom_point() +
@@ -42,11 +39,11 @@ plot_df_means_filtered  %>%
                 width=0.3,
                 size=0.5) +
   scale_x_continuous(trans = "log10")+
-  facet_wrap(. ~ SNP, nrow = 4, scales = 'free_x') +
+  facet_wrap(. ~ variant, nrow = 4, scales = 'free_x') +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(x = "conc. in uM", y = "fluorescence (a.u.)")
 
 
 data_for_prism <- plot_df_mean %>% mutate(assay = "07.07.2021")
-write.csv(data_for_prism,"~/Desktop/Prucalopride_Variant/data/PrucalopridePrism.csv", row.names = FALSE)
+write.csv(data_for_prism,"outputs/S3_means_of_medians.csv")
