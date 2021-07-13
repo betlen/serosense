@@ -4,7 +4,10 @@
 ### It is easiest to import it from github as project into R Studio.
 
 # Dependencies
-### Needed packages: tidyverse, pheatmap, flowCore
+Needed packages: 
+* tidyverse 
+* pheatmap
+* flowCore
 
 
 # Structure
