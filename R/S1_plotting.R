@@ -1,6 +1,12 @@
-load("Figure1/1D/data/df_plasmids/df_38.Rda")
-load("Figure1/1D/data/df_plasmids/pH_df_363738.Rda")
-library(tidyverse)
+# Figure S1 - violin plots for 5-HT4 at pH 4.8 and 7.2 (plasmid-based expression)
+
+# Load all the packages needed
+source(here::here("R/package_loading.R"))
+
+# Load the dataframe
+load(here::here("data/1C_data/df_38.Rda"))
+load(here::here("data/1C_data/pH_df_363738.Rda"))
+
 
 ph_low <-df_38 %>% dplyr::filter(strain != "yBL21") %>%  select(fluo, strain, ligand)
 ph_low$type <- "low"
@@ -12,7 +18,7 @@ the_ligands2 <-c(rep("100 uM pH 7.2", 360000), rep("0 uM pH 7.2", 360000))
 ph_high$ligand <-the_ligands2
 ph_all <-rbind(ph_low, ph_high)
 
-plot_all <- ph_all %>%
+plot_S1 <- ph_all %>%
             mutate(strain = factor(strain, levels=c("GPA1",
                                           "Gαs/olf",
                                           "Gα12",
@@ -36,7 +42,7 @@ plot_all <- ph_all %>%
   labs(x = "strain", y = "fluorescence (a.u.)", fill = "Serotonin conc. [uM] + pH")+
   theme(text = element_text(size=20), axis.text.x=element_blank(), axis.ticks = element_blank())+
   scale_fill_viridis_d()
-plot_all
+plot_S1
 
-
+ggsave("outputs/plot_S1.png", width = 10, height = 10)
 

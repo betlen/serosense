@@ -1,3 +1,5 @@
+# Figure S2 - violin plots of 5-HT4 plasmid-expression vs. integration
+
 # Load all the packages needed
 source(here::here("R/package_loading.R"))
 
@@ -6,7 +8,8 @@ load(here::here("data/S2_dataframe.Rda"))
 
 #  Arrange the strains in specific order
 
-S2_dataframe <- S2_dataframe %>% mutate(strain2 = factor(strain2, levels=c(
+S2_dataframe <- S2_dataframe %>% mutate(strain2 = factor(strain2,
+levels=c(
   "GPA1",
   "Gαs/olf",
   "Gα12",
@@ -20,7 +23,8 @@ S2_dataframe <- S2_dataframe %>% mutate(strain2 = factor(strain2, levels=c(
   "Gαo",
   "tGPA1",
   "yBL21"
-)), type = factor(type, levels=c(
+)),
+type = factor(type, levels=c(
   "plasmid",
   "integration"
 )))
@@ -46,5 +50,7 @@ plot_S2 <- S2_dataframe %>%
   theme(text = element_text(size=20), axis.text.x=element_blank(), axis.ticks = element_blank())+
   scale_fill_viridis_d()
 plot_S2
+
+ggsave("outputs/plot_S2.png", width = 10, height = 10)
 
 
