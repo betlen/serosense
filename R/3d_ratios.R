@@ -3,7 +3,7 @@
 # Loading the packages
 source(here::here("R/package_loading.R"))
 # Loading the data
-load("data/3D_dataframe.rda")
+load(here::here("data/3D_dataframe.rda"))
 
 
 # summary calculations

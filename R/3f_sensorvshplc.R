@@ -3,7 +3,7 @@
 # Loading the packages
 source(here::here("R/package_loading.R"))
 # Loading the data
-load("data/3F_df.rda")
+load(here::here("data/3F_df.rda"))
 
 
 # MEDIAN AND MEANS

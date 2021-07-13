@@ -3,7 +3,7 @@
 # Loading the packages
 source(here::here("R/package_loading.R"))
 # Loading the data
-load("data/3B_dataframe.rda")
+load(here::here("data/3B_dataframe.rda"))
 
 
 dataframe_3B <- df_3B %>% mutate(compound = factor(compound, levels=c(
