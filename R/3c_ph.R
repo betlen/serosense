@@ -1,8 +1,10 @@
+# Figure 3C - pH effect on 5-HT4
+
 # Loading the packages
 source(here::here("R/package_loading.R"))
 # Loading the packages
 load("data/3C_dataframe.rda")
-rm(dataframe_3d)
+
 #summary calculations
 
 #calculate median for each sample
